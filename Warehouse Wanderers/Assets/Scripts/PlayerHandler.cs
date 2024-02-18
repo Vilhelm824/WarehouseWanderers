@@ -37,6 +37,7 @@ public class PlayerHandler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("hit trigger");
         if (other.CompareTag("Crate"))
         {
             if (!isHolding) {
@@ -44,6 +45,7 @@ public class PlayerHandler : MonoBehaviour
             package = other.gameObject;
             other.gameObject.SetActive(false);
             isHolding = true;
+            Debug.Log("Picked up crate");
             }
         }
 
