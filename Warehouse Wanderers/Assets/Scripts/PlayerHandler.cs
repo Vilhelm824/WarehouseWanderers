@@ -18,10 +18,10 @@ public class PlayerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isHolding) {
-        package.transform.position = new Vector3(this.transform.position.x + 5.0f, this.transform.position.y, this.transform.position.z);
-        package.transform.rotation = this.transform.rotation;
-        }
+        //if (isHolding) {
+        //package.transform.position = new Vector3(this.transform.position.x + 5.0f, this.transform.position.y, this.transform.position.z);
+        //package.transform.rotation = this.transform.rotation;
+        //}
     }
 
     void DropOff(Collider2D dropOffLocation)
@@ -42,6 +42,7 @@ public class PlayerHandler : MonoBehaviour
             if (!isHolding) {
             // picks up the crate
             package = other.gameObject;
+            other.gameObject.SetActive(false);
             isHolding = true;
             }
         }
