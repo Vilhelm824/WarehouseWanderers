@@ -11,9 +11,12 @@ public class GameHandler : MonoBehaviour
     public float maxXSpawn = 8f; // Maximum x-coordinate for package spawn
     public float minYSpawn = -5f; // Minimum y-coordinate for package spawn
     public float maxYSpawn = 5f; // Maximum y-coordinate for package spawn
+    public int maxExplosions = 3;
 
     private float elapsedTime = 0f; // Time elapsed since last package spawn
     private float nextSpawnTime; // Time when the next package should spawn
+
+    private int consecExploded = 0;
 
     private void Start()
     {
@@ -22,6 +25,10 @@ public class GameHandler : MonoBehaviour
 
     private void Update()
     {
+        if(consecExploded >= maxExplosions)
+        {
+            GameEnd();
+        }
         elapsedTime += Time.deltaTime;
 
         if (elapsedTime >= nextSpawnTime)
@@ -46,11 +53,16 @@ public class GameHandler : MonoBehaviour
 
     public void PackageExploded()
     {
-        // Handle package explosion here
+        consecExploded++;
     }
 
     public void PackageDelivered()
     {
-        //Handle package delivery here
+        consecExploded = 0;
+    }
+
+    private void GameEnd()
+    {
+        // End state
     }
 }
