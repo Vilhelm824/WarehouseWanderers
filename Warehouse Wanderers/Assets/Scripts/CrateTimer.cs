@@ -6,8 +6,10 @@ using UnityEngine;
 public class CrateTimer : MonoBehaviour
 {
     private SpriteRenderer crateRenderer;
-    private Color crateColor = new Color(255, 255, 255, 255);   
-    public float timeToDestroy = 5f;
+    private Color crateColor = new Color(1f, 1f, 1f, 1f);   
+    public float destroyRate = 1f;
+    private float desiredAlpha = 0f;
+    private float currentAlpha = 1f;
     
 
     // Start is called before the first frame update
@@ -20,11 +22,13 @@ public class CrateTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeToDestroy -= Time.deltaTime;
+        currentAlpha = Mathf.MoveTowards(currentAlpha, desiredAlpha, destroyRate * Time.deltaTime);
+        crateColor.a = currentAlpha;
+        crateRenderer.color = crateColor;
 
         Debug.Log(crateRenderer.color);
 
-        if(timeToDestroy <= 0f)
+        if(currentAlpha <= 0f)
         {
             gameObject.SetActive(false);
         }
