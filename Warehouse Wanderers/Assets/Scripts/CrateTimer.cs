@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CrateTimer : MonoBehaviour
 {
+    public GameObject gameHandler;
     private SpriteRenderer crateRenderer;
     private ParticleSystem explosion;
     private Collider2D crateCollider;
@@ -33,11 +34,11 @@ public class CrateTimer : MonoBehaviour
 
         if(currentAlpha <= 0.1f && !hasExploded)
         {
-            Debug.Log("boutta buss");
             crateCollider.enabled = false;
             currentAlpha = 0;
             explosion.Play();
             hasExploded = true;
+            gameHandler.GetComponent<GameHandler>().PackageExploded();
             StartCoroutine(DestroyCrate(gameObject));
             // gameObject.SetActive(false);
         }
@@ -45,7 +46,7 @@ public class CrateTimer : MonoBehaviour
 
     IEnumerator DestroyCrate(GameObject theCrate)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(15f);
         Destroy(theCrate);
     }
 }

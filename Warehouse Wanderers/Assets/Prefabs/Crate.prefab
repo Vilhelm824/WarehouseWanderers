@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559321a93ee6765458c21fc7a386504e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameHandler: {fileID: 1499604427665485724, guid: 8c99517dc73ec5f4489fbc3fb701ffc9, type: 3}
   destroyRate: 0.1
 --- !u!61 &422634820529958277
 BoxCollider2D:
