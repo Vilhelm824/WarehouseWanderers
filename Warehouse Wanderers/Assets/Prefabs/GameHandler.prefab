@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1219077604896645364
 MonoBehaviour:
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpawnTime: 5
   maxSpawnTime: 15
-  cratePrefab: {fileID: 1563499272587921152, guid: 877b44ff322486a429478ddd7e87ffca, type: 3}
+  crateTemplate: {fileID: 0}
   minXSpawn: -8
   maxXSpawn: 8
   minYSpawn: -5
