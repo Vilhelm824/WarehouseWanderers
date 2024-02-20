@@ -11,7 +11,6 @@ public class CrateTimer : MonoBehaviour
     private Collider2D crateCollider;
     private Color crateColor = new Color(1f, 1f, 1f, 1f);   
     public float destroyRate = 1f;
-    private float desiredAlpha = 0f;
     private float currentAlpha = 1f;
     private bool hasExploded = false;
     
@@ -22,31 +21,46 @@ public class CrateTimer : MonoBehaviour
         explosion = GetComponentInChildren<ParticleSystem>();
         crateRenderer = GetComponentInChildren<SpriteRenderer>();
         crateCollider = GetComponent<Collider2D>();
+        currentAlpha = 1f;
         crateRenderer.color = crateColor;
+        hasExploded = false;
+        crateCollider.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentAlpha = Mathf.MoveTowards(currentAlpha, desiredAlpha, destroyRate * Time.deltaTime);
+        ChangeAlpha();
+
+        if (currentAlpha <= 0.1f && !hasExploded)
+        {
+            Explode();
+        }
+    }
+
+    private void Explode()
+    {
+        // disable collider, make invisible, activate particle FX
+        crateCollider.enabled = false;
+        currentAlpha = 0;
+        explosion.Play();
+        hasExploded = true;
+        // update gamehandler explosion count
+        gameHandler.GetComponent<GameHandler>().PackageExploded();
+        StartCoroutine(DestroyCrate(gameObject));
+    }
+
+    private void ChangeAlpha()
+    {
+        // increment the alpha value towards 0
+        currentAlpha = Mathf.MoveTowards(currentAlpha, 0, destroyRate * Time.deltaTime);
         crateColor.a = currentAlpha;
         crateRenderer.color = crateColor;
-
-        if(currentAlpha <= 0.1f && !hasExploded)
-        {
-            crateCollider.enabled = false;
-            currentAlpha = 0;
-            explosion.Play();
-            hasExploded = true;
-            gameHandler.GetComponent<GameHandler>().PackageExploded();
-            StartCoroutine(DestroyCrate(gameObject));
-            // gameObject.SetActive(false);
-        }
     }
 
     IEnumerator DestroyCrate(GameObject theCrate)
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(5f);
         Destroy(theCrate);
     }
 }
