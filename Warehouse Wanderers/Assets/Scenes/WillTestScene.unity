@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4559285567808755124, guid: 877b44ff322486a429478ddd7e87ffca, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4559285567808755124, guid: 877b44ff322486a429478ddd7e87ffca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -373,6 +373,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1219077604896645364, guid: 8c99517dc73ec5f4489fbc3fb701ffc9, type: 3}
+      propertyPath: maxSpawnTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219077604896645364, guid: 8c99517dc73ec5f4489fbc3fb701ffc9, type: 3}
+      propertyPath: minSpawnTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219077604896645364, guid: 8c99517dc73ec5f4489fbc3fb701ffc9, type: 3}
       propertyPath: crateTemplate
       value: 
       objectReference: {fileID: 412533491}
@@ -382,7 +390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3192586771505699566, guid: 8c99517dc73ec5f4489fbc3fb701ffc9, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3192586771505699566, guid: 8c99517dc73ec5f4489fbc3fb701ffc9, type: 3}
       propertyPath: m_LocalPosition.x
