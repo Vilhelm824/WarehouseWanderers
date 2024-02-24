@@ -9,8 +9,8 @@ public class GameHandler : MonoBehaviour
     public GameObject crateTemplate; // crate object to clone & spawn (should be disabled in scene)
     public float minXSpawn = -8f; // Minimum x-coordinate for package spawn
     public float maxXSpawn = 8f; // Maximum x-coordinate for package spawn
-    public float minYSpawn = -5f; // Minimum y-coordinate for package spawn
-    public float maxYSpawn = 5f; // Maximum y-coordinate for package spawn
+    public float minYSpawn = -4.5f; // Minimum y-coordinate for package spawn
+    public float maxYSpawn = 4.5f; // Maximum y-coordinate for package spawn
     public int maxExplosions = 3;
 
     private float elapsedTime = 0f; // Time elapsed since last package spawn
