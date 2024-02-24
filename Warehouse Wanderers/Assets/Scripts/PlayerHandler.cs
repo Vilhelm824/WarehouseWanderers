@@ -6,6 +6,9 @@ public class PlayerHandler : MonoBehaviour
 {
     bool isHolding = false;
     GameObject package;
+    public AudioSource pickupSound;
+    public AudioSource throwSound;
+    public AudioSource dropoffSound;
     float shiftAmount = 5.0f;
 
 
@@ -22,10 +25,15 @@ public class PlayerHandler : MonoBehaviour
         //package.transform.position = new Vector3(this.transform.position.x + 5.0f, this.transform.position.y, this.transform.position.z);
         //package.transform.rotation = this.transform.rotation;
         //}
+        if(Input.GetKeyDown("q") && isHolding)
+        {
+            Throw();
+        }
     }
 
     void DropOff(Collider2D dropOffLocation)
     {
+        dropoffSound.Play();
         package.transform.position = dropOffLocation.transform.position;
         package.transform.rotation = dropOffLocation.transform.rotation;
         isHolding = false;
@@ -33,23 +41,33 @@ public class PlayerHandler : MonoBehaviour
 
     void Throw()
     {
+        throwSound.Play();
+        package.transform.position = gameObject.transform.position;
+        package.transform.rotation = gameObject.transform.rotation;
+        package.SetActive(true);
+        isHolding = false;
+        Debug.Log("Threw Crate");
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void Pickup(Collider2D crate)
     {
-        Debug.Log("hit trigger");
-        if (other.CompareTag("Crate"))
-        {
-            if (!isHolding) {
             // picks up the crate
-            package = other.gameObject;
-            other.gameObject.SetActive(false);
+            package = crate.gameObject;
+            package.SetActive(false);
+            pickupSound.Play();
             isHolding = true;
             Debug.Log("Picked up crate");
-            }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        // confirm player is touching a crate, and check if they press space
+        if (other.CompareTag("Crate") && Input.GetKeyDown("e") && !isHolding)
+        {
+            Pickup(other);
         }
 
-        else if (other.CompareTag("DropOff"))
+        else if (other.CompareTag("DropOff") && isHolding)
         {
             DropOff(other);
         }

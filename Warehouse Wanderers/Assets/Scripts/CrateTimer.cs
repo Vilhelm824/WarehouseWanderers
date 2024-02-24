@@ -9,6 +9,7 @@ public class CrateTimer : MonoBehaviour
     private SpriteRenderer crateRenderer;
     private ParticleSystem explosion;
     private Collider2D crateCollider;
+    private AudioSource explosionAudio;
     private Color crateColor = new Color(1f, 1f, 1f, 1f);   
     public float destroyRate = 1f;
     private float currentAlpha = 1f;
@@ -21,6 +22,7 @@ public class CrateTimer : MonoBehaviour
         explosion = GetComponentInChildren<ParticleSystem>();
         crateRenderer = GetComponentInChildren<SpriteRenderer>();
         crateCollider = GetComponent<Collider2D>();
+        explosionAudio = GetComponent<AudioSource>();
         currentAlpha = 1f;
         crateRenderer.color = crateColor;
         hasExploded = false;
@@ -43,6 +45,7 @@ public class CrateTimer : MonoBehaviour
         // disable collider, make invisible, activate particle FX
         crateCollider.enabled = false;
         currentAlpha = 0;
+        explosionAudio.Play();
         explosion.Play();
         hasExploded = true;
         // update gamehandler explosion count
