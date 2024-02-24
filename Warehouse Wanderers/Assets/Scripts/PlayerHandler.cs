@@ -9,7 +9,6 @@ public class PlayerHandler : MonoBehaviour
     public AudioSource pickupSound;
     public AudioSource throwSound;
     public AudioSource dropoffSound;
-    float shiftAmount = 5.0f;
 
 
     // Start is called before the first frame update
@@ -25,7 +24,7 @@ public class PlayerHandler : MonoBehaviour
         //package.transform.position = new Vector3(this.transform.position.x + 5.0f, this.transform.position.y, this.transform.position.z);
         //package.transform.rotation = this.transform.rotation;
         //}
-        if(Input.GetKeyDown("q") && isHolding)
+        if(Input.GetKey("q") && isHolding)
         {
             Throw();
         }
@@ -62,7 +61,7 @@ public class PlayerHandler : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         // confirm player is touching a crate, and check if they press space
-        if (other.CompareTag("Crate") && Input.GetKeyDown("e") && !isHolding)
+        if (other.CompareTag("Crate") && Input.GetKey("e") && !isHolding)
         {
             Pickup(other);
         }
