@@ -3061,7 +3061,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -1295519047, guid: 0e4702d24bba51c4b95d49011f41484d, type: 3}
       - {fileID: 1079235145, guid: 0e4702d24bba51c4b95d49011f41484d, type: 3}
-      m_AnimationSpeed: 3.341382
+      m_AnimationSpeed: 3.628327
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 3, y: 1, z: 0}
@@ -3079,7 +3079,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 222992723, guid: 0e4702d24bba51c4b95d49011f41484d, type: 3}
       - {fileID: 1448800800, guid: 0e4702d24bba51c4b95d49011f41484d, type: 3}
-      m_AnimationSpeed: 3.940496
+      m_AnimationSpeed: 4.3730783
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -3615,6 +3615,10 @@ PrefabInstance:
     - target: {fileID: 7708140156320589138, guid: 289daffc43bbd48d9b4a49d2963a4698, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956260641484061845, guid: 289daffc43bbd48d9b4a49d2963a4698, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
