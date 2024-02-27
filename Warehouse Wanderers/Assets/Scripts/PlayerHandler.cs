@@ -6,6 +6,7 @@ public class PlayerHandler : MonoBehaviour
 {
     bool isHolding = false;
     GameObject package;
+    private static GameHandler gameHandlerInstance;
     public AudioSource pickupSound;
     public AudioSource throwSound;
     public AudioSource dropoffSound;
@@ -14,7 +15,7 @@ public class PlayerHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -28,6 +29,10 @@ public class PlayerHandler : MonoBehaviour
         {
             Throw();
         }
+    }
+
+    public void SetGameHandler(GameHandler gameHandler) {
+        gameHandlerInstance = gameHandler;
     }
 
     void DropOff(Collider2D dropOffLocation)
@@ -56,6 +61,7 @@ public class PlayerHandler : MonoBehaviour
             pickupSound.Play();
             isHolding = true;
             Debug.Log("Picked up crate");
+            gameHandlerInstance.PackageDelivered();
     }
 
     void OnTriggerStay2D(Collider2D other)
