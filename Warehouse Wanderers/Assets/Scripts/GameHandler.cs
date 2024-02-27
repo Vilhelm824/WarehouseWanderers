@@ -17,7 +17,7 @@ public class GameHandler : MonoBehaviour
     public int maxExplosions = 3;
     private float elapsedTime = 0f; // Time elapsed since last package spawn
     private float nextSpawnTime; // Time when the next package should spawn
-    private int numDelivered;
+    private static int numDelivered;
     private int consecExploded = 0;
 
     // UI Components
@@ -26,8 +26,8 @@ public class GameHandler : MonoBehaviour
 
     private void Start()
     {
-        PlayerHandler playerHandler = new PlayerHandler();
-        playerHandler.SetGameHandler(this);
+        // PlayerHandler playerHandler = new PlayerHandler();
+        // playerHandler.SetGameHandler(this);
         CalculateNextSpawnTime();
         consecExploded = 0;
     }
