@@ -26,8 +26,8 @@ public class GameHandler : MonoBehaviour
 
     private void Start()
     {
-        PlayerHandler playerHandler = new PlayerHandler();
-        playerHandler.SetGameHandler(this);
+        // PlayerHandler playerHandler = new PlayerHandler();
+        // playerHandler.SetGameHandler(this);
         CalculateNextSpawnTime();
         consecExploded = 0;
     }

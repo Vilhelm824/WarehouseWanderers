@@ -41,6 +41,7 @@ public class PlayerHandler : MonoBehaviour
         package.transform.position = dropOffLocation.transform.position;
         package.transform.rotation = dropOffLocation.transform.rotation;
         isHolding = false;
+        gameHandlerInstance.PackageDelivered();
     }
 
     void Throw()
@@ -55,13 +56,12 @@ public class PlayerHandler : MonoBehaviour
 
     void Pickup(Collider2D crate)
     {
-            // picks up the crate
-            package = crate.gameObject;
-            package.SetActive(false);
-            pickupSound.Play();
-            isHolding = true;
-            Debug.Log("Picked up crate");
-            gameHandlerInstance.PackageDelivered();
+        // picks up the crate
+        package = crate.gameObject;
+        package.SetActive(false);
+        pickupSound.Play();
+        isHolding = true;
+        Debug.Log("Picked up crate");
     }
 
     void OnTriggerStay2D(Collider2D other)
