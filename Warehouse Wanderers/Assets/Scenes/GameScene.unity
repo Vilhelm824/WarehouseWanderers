@@ -1556,7 +1556,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -50
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -3781,7 +3781,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -1295519047, guid: 0e4702d24bba51c4b95d49011f41484d, type: 3}
       - {fileID: 1079235145, guid: 0e4702d24bba51c4b95d49011f41484d, type: 3}
-      m_AnimationSpeed: 3.9363568
+      m_AnimationSpeed: 3.0495498
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 9, y: 3, z: 0}
@@ -3790,7 +3790,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 222992723, guid: 0e4702d24bba51c4b95d49011f41484d, type: 3}
       - {fileID: 1448800800, guid: 0e4702d24bba51c4b95d49011f41484d, type: 3}
-      m_AnimationSpeed: 3.457675
+      m_AnimationSpeed: 3.0078378
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -3917,6 +3917,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1354852337242250573, guid: 289daffc43bbd48d9b4a49d2963a4698, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6faf173ad08441948bca564cee515a6, type: 3}
     - target: {fileID: 2193132790418980720, guid: 289daffc43bbd48d9b4a49d2963a4698, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4016,7 +4020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996147534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.51, z: 0}
+  m_LocalPosition: {x: 0, y: -6.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
