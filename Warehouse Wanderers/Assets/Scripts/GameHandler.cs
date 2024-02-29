@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class GameHandler : MonoBehaviour
 {
     // Game components
-    public float minSpawnTime = 10f; // Minimum time between package spawns
-    public float maxSpawnTime = 30f; // Maximum time between package spawns
+    public float minSpawnTime = 5f; // Minimum time between package spawns
+    public float maxSpawnTime = 10f; // Maximum time between package spawns
     public GameObject crateTemplate; // crate object to clone & spawn (should be disabled in scene)
-    public float minXSpawn = -8f; // Minimum x-coordinate for package spawn
-    public float maxXSpawn = 8f; // Maximum x-coordinate for package spawn
-    public float minYSpawn = -4.5f; // Minimum y-coordinate for package spawn
-    public float maxYSpawn = 4.5f; // Maximum y-coordinate for package spawn
+    public float minXSpawn = -5f; // Minimum x-coordinate for package spawn
+    public float maxXSpawn = 5f; // Maximum x-coordinate for package spawn
+    public float minYSpawn = -3f; // Minimum y-coordinate for package spawn
+    public float maxYSpawn = 3f; // Maximum y-coordinate for package spawn
     public int maxExplosions = 3;
     private float elapsedTime = 0f; // Time elapsed since last package spawn
     private float nextSpawnTime; // Time when the next package should spawn
