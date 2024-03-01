@@ -71,7 +71,7 @@ public class GameHandler : MonoBehaviour
         consecExploded++;
         Debug.Log("num exploded: " + consecExploded);
         packagePosInt = new Vector3Int(Mathf.FloorToInt(packagePos.x), Mathf.FloorToInt(packagePos.y));
-        fireTM.SetTile(packagePosInt, fireTile);
+        StartCoroutine(SpawnFire(packagePosInt));
     }
 
     public void PackageDelivered()
@@ -107,5 +107,11 @@ public class GameHandler : MonoBehaviour
 
     public void OnCloseButtonPressed() {
         pauseMenu.gameObject.SetActive(false);
+    }
+
+    IEnumerator SpawnFire(Vector3Int packagePosInt)
+    {
+        yield return new WaitForSeconds(0.5f);
+        fireTM.SetTile(packagePosInt, fireTile);
     }
 }
