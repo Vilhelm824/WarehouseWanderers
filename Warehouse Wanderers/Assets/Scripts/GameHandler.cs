@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class GameHandler : MonoBehaviour
@@ -10,6 +11,8 @@ public class GameHandler : MonoBehaviour
     public float minSpawnTime = 5f; // Minimum time between package spawns
     public float maxSpawnTime = 10f; // Maximum time between package spawns
     public GameObject crateTemplate; // crate object to clone & spawn (should be disabled in scene)
+    public Tilemap fireTM;
+    public Tile fireTile;
     public float minXSpawn = -5f; // Minimum x-coordinate for package spawn
     public float maxXSpawn = 5f; // Maximum x-coordinate for package spawn
     public float minYSpawn = -3f; // Minimum y-coordinate for package spawn
@@ -19,6 +22,7 @@ public class GameHandler : MonoBehaviour
     private float nextSpawnTime; // Time when the next package should spawn
     private static int numDelivered;
     private int consecExploded = 0;
+    private Vector3Int packagePosInt;
 
     // UI Components
     public Text scoreText;
@@ -62,10 +66,12 @@ public class GameHandler : MonoBehaviour
         Instantiate(crateTemplate, spawnPos, Quaternion.identity).SetActive(true);
     }
 
-    public void PackageExploded()
+    public void PackageExploded(Vector3 packagePos)
     {
         consecExploded++;
         Debug.Log("num exploded: " + consecExploded);
+        packagePosInt = new Vector3Int(Mathf.FloorToInt(packagePos.x), Mathf.FloorToInt(packagePos.y));
+        fireTM.SetTile(packagePosInt, fireTile);
     }
 
     public void PackageDelivered()
