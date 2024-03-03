@@ -79,7 +79,7 @@ public class PlayerHandler : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("hi");
+        //Debug.Log("hi");
         // confirm player is touching a crate, and check if they press space
         if (other.CompareTag("Crate") && Input.GetKey("e") && !isHolding)
         {

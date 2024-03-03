@@ -30,8 +30,8 @@ public class GameHandler : MonoBehaviour
 
     private void Start()
     {
-        // PlayerHandler playerHandler = new PlayerHandler();
-        // playerHandler.SetGameHandler(this);
+        PlayerHandler playerHandler = new PlayerHandler();
+        playerHandler.SetGameHandler(this);
         CalculateNextSpawnTime();
         consecExploded = 0;
     }
@@ -78,23 +78,26 @@ public class GameHandler : MonoBehaviour
     {
         consecExploded = 0;
         numDelivered++;
+        Debug.Log("num delivered: " + numDelivered);
     }
 
     private void GameEnd()
     {
         // End state
         SceneManager.LoadScene("EndScene");
+        SceneManager.UnloadSceneAsync("GameScene");
     }
 
     public void Replay() {
+        Debug.Log("replay button");
         SceneManager.LoadScene("GameScene");
+        SceneManager.UnloadSceneAsync("EndScene");
     }
 
     private void UpdateScoreText() {
         Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == "GameScene") {
             scoreText.text = "" + numDelivered;
-            scoreText.gameObject.SetActive(true);
         }
         else if (currentScene.name == "EndScene") {
             scoreText.text = "You picked up " + numDelivered + " packages!";
