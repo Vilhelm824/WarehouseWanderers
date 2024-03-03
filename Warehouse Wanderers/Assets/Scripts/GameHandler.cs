@@ -105,10 +105,12 @@ public class GameHandler : MonoBehaviour
         }
     }
     public void OnPauseButtonPressed() {
+        Debug.Log("pause button pressed");
         pauseMenu.gameObject.SetActive(true);
     }
 
     public void OnCloseButtonPressed() {
+        Debug.Log("close button pressed");
         pauseMenu.gameObject.SetActive(false);
     }
 
