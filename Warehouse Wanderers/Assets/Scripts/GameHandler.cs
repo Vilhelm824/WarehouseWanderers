@@ -12,7 +12,7 @@ public class GameHandler : MonoBehaviour
     public float maxSpawnTime = 10f; // Maximum time between package spawns
     public GameObject crateTemplate; // crate object to clone & spawn (should be disabled in scene)
     public Tilemap fireTM;
-    public Tile fireTile;
+    public TileBase fireTile;
     public float minXSpawn = -5f; // Minimum x-coordinate for package spawn
     public float maxXSpawn = 5f; // Maximum x-coordinate for package spawn
     public float minYSpawn = -3f; // Minimum y-coordinate for package spawn
@@ -23,7 +23,7 @@ public class GameHandler : MonoBehaviour
     private static int numDelivered;
     private int consecExploded = 0;
     private Vector3Int packagePosInt;
-    private bool spawningActive = true;
+    private static bool spawningActive = true;
 
     // UI Components
     public Text scoreText;
@@ -90,11 +90,13 @@ public class GameHandler : MonoBehaviour
     private void GameEnd()
     {
         // End state
+        spawningActive = false;
         SceneManager.LoadScene("EndScene");
     }
     
     public void Replay() {
-        Debug.Log("replay button");
+        numDelivered = 0;
+        spawningActive = true;
         SceneManager.LoadScene("GameScene");
     }
 
