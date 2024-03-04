@@ -24,10 +24,6 @@ public class PlayerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (isHolding) {
-        //package.transform.position = new Vector3(this.transform.position.x + 5.0f, this.transform.position.y, this.transform.position.z);
-        //package.transform.rotation = this.transform.rotation;
-        //}
         if(Input.GetKey("q") && isHolding)
         {
             Throw();

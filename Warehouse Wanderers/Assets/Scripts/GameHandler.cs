@@ -23,21 +23,27 @@ public class GameHandler : MonoBehaviour
     private static int numDelivered;
     private int consecExploded = 0;
     private Vector3Int packagePosInt;
+    private bool spawningActive = true;
 
     // UI Components
     public Text scoreText;
-    public Canvas pauseMenu;
+    public GameObject pauseMenu;
 
     private void Start()
     {
-        PlayerHandler playerHandler = new PlayerHandler();
-        playerHandler.SetGameHandler(this);
+        //PlayerHandler playerHandler = new PlayerHandler();
+        this.GetComponent<PlayerHandler>().SetGameHandler(this);
         CalculateNextSpawnTime();
         consecExploded = 0;
+        pauseMenu.SetActive(false);
     }
 
     private void Update()
     {
+        if (!spawningActive) {
+            return;
+        }
+
         if(consecExploded >= maxExplosions)
         {
             GameEnd();
@@ -85,13 +91,11 @@ public class GameHandler : MonoBehaviour
     {
         // End state
         SceneManager.LoadScene("EndScene");
-        SceneManager.UnloadSceneAsync("GameScene");
     }
-
+    
     public void Replay() {
         Debug.Log("replay button");
         SceneManager.LoadScene("GameScene");
-        SceneManager.UnloadSceneAsync("EndScene");
     }
 
     private void UpdateScoreText() {
@@ -106,12 +110,14 @@ public class GameHandler : MonoBehaviour
     }
     public void OnPauseButtonPressed() {
         Debug.Log("pause button pressed");
-        pauseMenu.gameObject.SetActive(true);
+        pauseMenu.SetActive(true);
+        spawningActive = false;
     }
 
     public void OnCloseButtonPressed() {
         Debug.Log("close button pressed");
-        pauseMenu.gameObject.SetActive(false);
+        pauseMenu.SetActive(false);
+        spawningActive = true;
     }
 
     IEnumerator SpawnFire(Vector3Int packagePosInt)
