@@ -20,7 +20,7 @@ public class GameHandler : MonoBehaviour
     public int maxExplosions = 3;
     private float elapsedTime = 0f; // Time elapsed since last package spawn
     private float nextSpawnTime; // Time when the next package should spawn
-    private static int numDelivered;
+    public static int numDelivered;
     private int consecExploded = 0;
     private Vector3Int packagePosInt;
     private static bool spawningActive = true;
@@ -36,6 +36,8 @@ public class GameHandler : MonoBehaviour
         CalculateNextSpawnTime();
         consecExploded = 0;
         pauseMenu.SetActive(false);
+        numDelivered = 0;
+        spawningActive = true;
     }
 
     private void Update()
@@ -93,22 +95,9 @@ public class GameHandler : MonoBehaviour
         spawningActive = false;
         SceneManager.LoadScene("EndScene");
     }
-    
-    public void Replay() {
-        numDelivered = 0;
-        spawningActive = true;
-        SceneManager.LoadScene("GameScene");
-    }
 
     private void UpdateScoreText() {
-        Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "GameScene") {
-            scoreText.text = "" + numDelivered;
-        }
-        else if (currentScene.name == "EndScene") {
-            scoreText.text = "You picked up " + numDelivered + " packages!";
-            scoreText.gameObject.SetActive(true);
-        }
+        scoreText.text = "" + numDelivered;
     }
     public void OnPauseButtonPressed() {
         Debug.Log("pause button pressed");
