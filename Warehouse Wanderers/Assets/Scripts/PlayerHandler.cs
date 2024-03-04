@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +10,6 @@ public class PlayerHandler : MonoBehaviour
     public AudioSource pickupSound;
     public AudioSource throwSound;
     public AudioSource dropoffSound;
-    public GameObject playerSprite;
-    public GameObject holdingSprite;
 
 
     // Start is called before the first frame update
@@ -24,6 +21,10 @@ public class PlayerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (isHolding) {
+        //package.transform.position = new Vector3(this.transform.position.x + 5.0f, this.transform.position.y, this.transform.position.z);
+        //package.transform.rotation = this.transform.rotation;
+        //}
         if(Input.GetKey("q") && isHolding)
         {
             Throw();
@@ -40,7 +41,6 @@ public class PlayerHandler : MonoBehaviour
         package.transform.position = dropOffLocation.transform.position;
         package.transform.rotation = dropOffLocation.transform.rotation;
         isHolding = false;
-        UpdateSprite();
         gameHandlerInstance.PackageDelivered();
     }
 
@@ -51,7 +51,6 @@ public class PlayerHandler : MonoBehaviour
         package.transform.rotation = gameObject.transform.rotation;
         package.SetActive(true);
         isHolding = false;
-        UpdateSprite();
         Debug.Log("Threw Crate");
     }
 
@@ -62,20 +61,11 @@ public class PlayerHandler : MonoBehaviour
         package.SetActive(false);
         pickupSound.Play();
         isHolding = true;
-        UpdateSprite();
         Debug.Log("Picked up crate");
-    }
-
-
-    void UpdateSprite()
-    {
-        playerSprite.SetActive(!isHolding);
-        holdingSprite.SetActive(isHolding);
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        //Debug.Log("hi");
         // confirm player is touching a crate, and check if they press space
         if (other.CompareTag("Crate") && Input.GetKey("e") && !isHolding)
         {

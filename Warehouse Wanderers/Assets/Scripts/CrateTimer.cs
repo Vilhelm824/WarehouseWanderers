@@ -49,7 +49,7 @@ public class CrateTimer : MonoBehaviour
         explosion.Play();
         hasExploded = true;
         // update gamehandler explosion count
-        gameHandler.GetComponent<GameHandler>().PackageExploded(gameObject.transform.position);
+        gameHandler.GetComponent<GameHandler>().PackageExploded();
         StartCoroutine(DestroyCrate(gameObject));
     }
 
