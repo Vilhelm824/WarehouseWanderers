@@ -525,7 +525,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1310722100}
-        m_TargetAssemblyTypeName: EndSceneHandler, Assembly-CSharp
+        m_TargetAssemblyTypeName: TutorialHandler, Assembly-CSharp
         m_MethodName: Replay
         m_Mode: 1
         m_Arguments:
@@ -583,10 +583,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1310722095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 896092537e05b4c8685c4f2fb47f0ff5, type: 3}
+  m_Script: {fileID: 11500000, guid: 95f2c5c55d147410f81e52ae989da178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!1 &1936349653
 GameObject:
   m_ObjectHideFlags: 0
